@@ -49,7 +49,15 @@
               <Style Selector="DataGridRow">
                 <Setter Property="Header" Value="{Binding $self.Index}"/>
               </Style>
+              <Style Selector="DataGridRow.hi-gdp">
+                <Setter Property="TextElement.FontWeight" Value="Bold" />
+              </Style>
             </DataGrid.Styles>
+            <DataGrid.RowTemplate>
+              <DataGridRowTemplate>
+                <DataGridRow Classes.hi-gdp="{Binding IsHighGdp}" x:DataType="local:Country"/>
+              </DataGridRowTemplate>
+            </DataGrid.RowTemplate>
             <DataGrid.Columns>
               <!-- Using HeaderTemplate -->
               <DataGridTextColumn Header="Country or Region" HeaderTemplate="{StaticResource Demo.DataTemplates.CountryHeader}" Binding="{Binding Name}"  Width="6*" x:DataType="local:Country" />

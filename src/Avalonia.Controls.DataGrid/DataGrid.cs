@@ -58,6 +58,9 @@ namespace Avalonia.Controls
         internal const bool DATAGRID_defaultCanUserReorderColumns = true;
         internal const bool DATAGRID_defaultCanUserResizeColumns = true;
         internal const bool DATAGRID_defaultCanUserSortColumns = true;
+        
+        private static readonly FuncTemplate<DataGridRow> DefaultDataGridRow =
+            new(() => new DataGridRow());
 
         /// <summary>
         /// The default order to use for columns when there is no <see cref="DisplayAttribute.Order"/>
@@ -586,6 +589,15 @@ namespace Avalonia.Controls
         {
             get { return GetValue(DropLocationIndicatorTemplateProperty); }
             set { SetValue(DropLocationIndicatorTemplateProperty, value); }
+        }
+
+        public static readonly StyledProperty<ITemplate<DataGridRow>> RowTemplateProperty =
+            AvaloniaProperty.Register<DataGrid, ITemplate<DataGridRow>>(nameof(RowTemplate), DefaultDataGridRow);
+
+        public ITemplate<DataGridRow> RowTemplate
+        {
+            get => GetValue(RowTemplateProperty);
+            set => SetValue(RowTemplateProperty, value);
         }
 
         private int _selectedIndex = -1;

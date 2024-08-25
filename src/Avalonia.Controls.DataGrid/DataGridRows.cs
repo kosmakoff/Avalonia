@@ -1022,7 +1022,7 @@ namespace Avalonia.Controls
             DataGridRow dataGridRow = GetGeneratedRow(dataContext);
             if (dataGridRow == null)
             {
-                dataGridRow = DisplayData.GetUsedRow() ?? new DataGridRow();
+                dataGridRow = DisplayData.GetUsedRow() ?? RowTemplate.Build();
                 dataGridRow.Index = rowIndex;
                 dataGridRow.Slot = slot;
                 dataGridRow.OwningGrid = this;
